@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class AdminRiverController {
@@ -26,12 +28,12 @@ public class AdminRiverController {
     }
 
     @PostMapping("/admin/rivers")
-    public AdminRiver createRiver(@RequestBody AdminRiverDto adminRiverDto){
+    public AdminRiver createRiver(@RequestBody @Valid AdminRiverDto adminRiverDto){
         return adminRiverService.createRiver(mapAdminRiver(adminRiverDto, EMPTY_ID));
    }
 
     @PutMapping("/admin/rivers/{id}")
-    public AdminRiver updateRiver(@RequestBody AdminRiverDto adminRiverDto, @PathVariable Long id){
+    public AdminRiver updateRiver(@RequestBody @Valid AdminRiverDto adminRiverDto, @PathVariable Long id){
         return adminRiverService.updateRiver(mapAdminRiver(adminRiverDto, id));
     }
 

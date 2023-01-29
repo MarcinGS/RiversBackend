@@ -1,8 +1,9 @@
-package com.golismarcin.riverslevelmonitor.river.model;
+package com.golismarcin.riverslevelmonitor.userRiver.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class River {
+public class UserRiver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +31,6 @@ public class River {
     private LocalDateTime  iceDate;
     private Double growLevel;
     private LocalDateTime growDate;
+    @Type(type = "text")
+    private String note;
 }

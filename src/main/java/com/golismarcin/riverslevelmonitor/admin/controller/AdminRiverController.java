@@ -37,6 +37,11 @@ public class AdminRiverController {
         return adminRiverService.updateRiver(mapAdminRiver(adminRiverDto, id));
     }
 
+    @DeleteMapping("/admin/rivers/{id}")
+    public void deleteRiver(@PathVariable Long id){
+        adminRiverService.deleteRiver(id);
+    }
+
     private static AdminRiver mapAdminRiver(AdminRiverDto adminRiverDto, Long id) {
         return AdminRiver.builder()
                 .id(id)

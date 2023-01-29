@@ -28,4 +28,8 @@ public class AdminRiverService {
     public AdminRiver updateRiver(AdminRiver river) {
         return adminRiverRepository.save(river);
     }
+
+    public void deleteRiver(Long id) {
+        adminRiverRepository.deleteById(id);
+    }
 }

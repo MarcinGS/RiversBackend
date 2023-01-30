@@ -20,7 +20,7 @@ public class AdminRiver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String stationId;
+    private Long stationId;
     private String stationName;
     private String riverName;
     private String region;
@@ -32,4 +32,5 @@ public class AdminRiver {
     private LocalDateTime  iceDate;
     private Double growLevel;
     private LocalDateTime growDate;
+    private String image;
 }

@@ -5,13 +5,13 @@ import lombok.Getter;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
 public class AdminRiverDto {
-        @NotEmpty
-        @NotBlank
-        private String stationId;
+        @NotNull
+        private Long stationId;
         @NotEmpty
         @NotBlank
         private String stationName;
@@ -31,4 +31,5 @@ public class AdminRiverDto {
         @Min(0)
         private Double growLevel;
         private LocalDateTime growDate;
+        private String image;
 }

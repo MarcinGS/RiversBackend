@@ -1,10 +1,10 @@
-package com.golismarcin.riverslevelmonitor.admin.controller;
+package com.golismarcin.riverslevelmonitor.admin.adminRiver.controller;
 
-import com.golismarcin.riverslevelmonitor.admin.dto.AdminRiverDto;
-import com.golismarcin.riverslevelmonitor.admin.dto.UploadResponse;
-import com.golismarcin.riverslevelmonitor.admin.model.AdminRiver;
-import com.golismarcin.riverslevelmonitor.admin.service.AdminRiverImageService;
-import com.golismarcin.riverslevelmonitor.admin.service.AdminRiverService;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.dto.AdminRiverDto;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.dto.UploadResponse;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverImageService;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;

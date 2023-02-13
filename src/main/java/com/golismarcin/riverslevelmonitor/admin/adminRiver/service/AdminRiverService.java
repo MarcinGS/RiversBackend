@@ -1,7 +1,7 @@
-package com.golismarcin.riverslevelmonitor.admin.service;
+package com.golismarcin.riverslevelmonitor.admin.adminRiver.service;
 
-import com.golismarcin.riverslevelmonitor.admin.model.AdminRiver;
-import com.golismarcin.riverslevelmonitor.admin.repository.AdminRiverRepository;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.repository.AdminRiverRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

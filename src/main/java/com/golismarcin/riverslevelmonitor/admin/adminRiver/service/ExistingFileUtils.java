@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.admin.service;
+package com.golismarcin.riverslevelmonitor.admin.adminRiver.service;
 
 import org.apache.commons.io.FilenameUtils;
 

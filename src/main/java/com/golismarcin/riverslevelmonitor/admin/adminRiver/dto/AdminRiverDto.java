@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.admin.dto;
+package com.golismarcin.riverslevelmonitor.admin.adminRiver.dto;
 
 import lombok.Getter;
 

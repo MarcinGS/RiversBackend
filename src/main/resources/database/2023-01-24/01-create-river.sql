@@ -13,7 +13,8 @@ create table adminriver (
     iceLevel double,
     iceDate datetime,
     growLevel double,
-    growDate datetime
+    growDate datetime,
+    image varchar(128)
 );
 
 create table userriver (
@@ -30,5 +31,6 @@ create table userriver (
    iceDate datetime,
    growLevel double,
    growDate datetime,
-   note longtext
+   note longtext,
+   image varchar(128)
 );

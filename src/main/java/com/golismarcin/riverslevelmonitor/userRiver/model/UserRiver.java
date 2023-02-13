@@ -33,4 +33,5 @@ public class UserRiver {
     private LocalDateTime growDate;
     @Type(type = "text")
     private String note;
+    private String image;
 }

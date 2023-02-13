@@ -20,9 +20,9 @@ public class UserRiverController {
         return userRiverService.getRivers(pageable);
     }
 
-    @GetMapping("/rivers/{id}")
-    public UserRiver getRiver(@PathVariable Long id){
-        return userRiverService.getRiver(id);
+    @GetMapping("/rivers/{stationId}")
+    public UserRiver getRiver(@PathVariable Long stationId){
+        return userRiverService.getRiver(stationId);
     }
 
 

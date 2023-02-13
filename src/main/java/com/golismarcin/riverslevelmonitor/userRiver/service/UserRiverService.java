@@ -17,7 +17,7 @@ public class UserRiverService {
         return userRiverRepository.findAll(pageable);
     }
 
-    public UserRiver getRiver(Long id){
-        return userRiverRepository.findById(id).orElseThrow();
+    public UserRiver getRiver(Long stationId){
+        return userRiverRepository.findUserRiverByStationId(stationId).orElseThrow();
     }
 }

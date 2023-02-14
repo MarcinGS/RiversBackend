@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.admin.adminRiver.controller;
 
-import com.golismarcin.riverslevelmonitor.admin.adminRiver.dto.AdminRiverDto;
-import com.golismarcin.riverslevelmonitor.admin.adminRiver.dto.UploadResponse;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto.AdminRiverDto;
+import com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto.UploadResponse;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverImageService;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverService;
@@ -77,7 +77,7 @@ public class AdminRiverController {
                 .stationId(adminRiverDto.getStationId())
                 .stationName(adminRiverDto.getStationName())
                 .riverName(adminRiverDto.getRiverName())
-                .region(adminRiverDto.getRegion())
+                .regionId(adminRiverDto.getRegionId())
                 .waterLevel(adminRiverDto.getWaterLevel())
                 .waterDate(adminRiverDto.getWaterDate())
                 .waterTemp(adminRiverDto.getWaterTemp())

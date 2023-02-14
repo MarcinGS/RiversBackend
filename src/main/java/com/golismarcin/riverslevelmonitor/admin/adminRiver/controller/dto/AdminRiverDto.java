@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.admin.adminRiver.dto;
+package com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto;
 
 import lombok.Getter;
 
@@ -18,9 +18,8 @@ public class AdminRiverDto {
         @NotEmpty
         @NotBlank
         private String riverName;
-        @NotEmpty
-        @NotBlank
-        private String region;
+        @NotNull
+        private Long regionId;
         private Double waterLevel;
         private LocalDateTime waterDate;
         private Double waterTemp;

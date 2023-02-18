@@ -22,7 +22,7 @@ public class UserRiver {
     private Long stationId;
     private String stationName;
     private String riverName;
-   // private String region;
+   // private Long regionId;
     private Double waterLevel;
     private LocalDateTime  waterDate;
     private Double waterTemp;

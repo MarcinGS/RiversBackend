@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.note.model.dto;
+package com.golismarcin.riverslevelmonitor.note.controller.dto;
 
 import org.hibernate.validator.constraints.Length;
 

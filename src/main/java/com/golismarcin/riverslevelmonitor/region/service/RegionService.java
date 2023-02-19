@@ -1,11 +1,11 @@
 package com.golismarcin.riverslevelmonitor.region.service;
 
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
-import com.golismarcin.riverslevelmonitor.admin.adminRiver.repository.AdminRiverRepository;
-import com.golismarcin.riverslevelmonitor.region.model.Region;
-import com.golismarcin.riverslevelmonitor.region.model.RegionRiverDto;
+import com.golismarcin.riverslevelmonitor.common.dto.UserRiverListDto;
+import com.golismarcin.riverslevelmonitor.common.model.Region;
+import com.golismarcin.riverslevelmonitor.common.repository.AdminRiverRepository;
+import com.golismarcin.riverslevelmonitor.region.dto.RegionRiverDto;
 import com.golismarcin.riverslevelmonitor.region.repository.RegionRepository;
-import com.golismarcin.riverslevelmonitor.userRiver.controller.dto.UserRiverListDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

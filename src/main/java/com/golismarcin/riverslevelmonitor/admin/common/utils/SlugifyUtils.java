@@ -1,9 +1,9 @@
-package com.golismarcin.riverslevelmonitor.admin.adminRiver.service;
+package com.golismarcin.riverslevelmonitor.admin.common.utils;
 
 import com.github.slugify.Slugify;
 import org.apache.commons.io.FilenameUtils;
 
-class UploadedFileNameUtils {
+public class SlugifyUtils {
 
     public static String slugifyFileName(String fileName){
         String name = FilenameUtils.getBaseName(fileName);

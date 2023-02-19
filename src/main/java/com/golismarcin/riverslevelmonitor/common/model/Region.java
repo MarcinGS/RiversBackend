@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.region.model;
+package com.golismarcin.riverslevelmonitor.common.model;
 
 import lombok.Getter;
 

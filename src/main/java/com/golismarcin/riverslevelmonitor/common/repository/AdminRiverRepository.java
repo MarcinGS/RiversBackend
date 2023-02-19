@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.admin.adminRiver.repository;
+package com.golismarcin.riverslevelmonitor.common.repository;
 
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
 import org.springframework.data.domain.Page;

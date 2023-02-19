@@ -1,11 +1,11 @@
-package com.golismarcin.riverslevelmonitor.admin.adminRiver.service;
+package com.golismarcin.riverslevelmonitor.admin.common.utils;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class UploadedFileNameUtilsTest {
+class SlugifyUtilsTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -17,7 +17,7 @@ class UploadedFileNameUtilsTest {
             "Foto__1.png, foto-1.png",
     })
     void shouldSlugifyFileName(String in, String out){
-        String filename = UploadedFileNameUtils.slugifyFileName(in);
+        String filename = SlugifyUtils.slugifyFileName(in);
         assertEquals(filename,out);
     }
 

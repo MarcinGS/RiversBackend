@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.userRiver.controller;
 
-import com.golismarcin.riverslevelmonitor.userRiver.controller.dto.UserRiverListDto;
-import com.golismarcin.riverslevelmonitor.userRiver.model.UserRiver;
+import com.golismarcin.riverslevelmonitor.common.dto.UserRiverListDto;
+import com.golismarcin.riverslevelmonitor.common.model.UserRiver;
 import com.golismarcin.riverslevelmonitor.userRiver.service.UserRiverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

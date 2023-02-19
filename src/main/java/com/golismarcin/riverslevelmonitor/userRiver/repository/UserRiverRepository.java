@@ -1,6 +1,6 @@
 package com.golismarcin.riverslevelmonitor.userRiver.repository;
 
-import com.golismarcin.riverslevelmonitor.userRiver.model.UserRiver;
+import com.golismarcin.riverslevelmonitor.common.model.UserRiver;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.region.controller;
 
-import com.golismarcin.riverslevelmonitor.region.model.Region;
-import com.golismarcin.riverslevelmonitor.region.model.RegionRiverDto;
+import com.golismarcin.riverslevelmonitor.common.model.Region;
+import com.golismarcin.riverslevelmonitor.region.dto.RegionRiverDto;
 import com.golismarcin.riverslevelmonitor.region.service.RegionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

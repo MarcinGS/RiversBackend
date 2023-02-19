@@ -1,20 +1,27 @@
-package com.golismarcin.riverslevelmonitor.userRiver.controller.dto;
+package com.golismarcin.riverslevelmonitor.common.model;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@Entity
 @Getter
-@Builder
-public class UserRiverListDto {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserRiver {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long stationId;
     private String stationName;
     private String riverName;
     private Long regionId;
     private Double waterLevel;
-    private LocalDateTime waterDate;
+    private LocalDateTime  waterDate;
     private Double waterTemp;
     private LocalDateTime  tempDate;
     private Double iceLevel;
@@ -22,4 +29,7 @@ public class UserRiverListDto {
     private Double growLevel;
     private LocalDateTime growDate;
     private String image;
+    @OneToMany
+    @JoinColumn(name = "riverId")
+    private List<Note> note;
 }

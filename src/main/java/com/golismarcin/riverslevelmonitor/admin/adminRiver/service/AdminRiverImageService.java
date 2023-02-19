@@ -1,5 +1,6 @@
 package com.golismarcin.riverslevelmonitor.admin.adminRiver.service;
 
+import com.golismarcin.riverslevelmonitor.admin.common.utils.SlugifyUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
@@ -19,7 +20,7 @@ public class AdminRiverImageService {
     String uploadDir;
 
     public String uploadImage(String fileName, InputStream inputStream) {
-        String newFilaName = UploadedFileNameUtils.slugifyFileName(fileName);
+        String newFilaName = SlugifyUtils.slugifyFileName(fileName);
         newFilaName = ExistingFileUtils.renameIfExists(Path.of(uploadDir), newFilaName);
 
         Path filePath = Paths.get(uploadDir).resolve(newFilaName);

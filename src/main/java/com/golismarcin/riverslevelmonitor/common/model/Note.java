@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.note.model;
+package com.golismarcin.riverslevelmonitor.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

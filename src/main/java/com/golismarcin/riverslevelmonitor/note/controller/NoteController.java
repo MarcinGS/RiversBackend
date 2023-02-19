@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.note.controller;
 
-import com.golismarcin.riverslevelmonitor.note.model.Note;
-import com.golismarcin.riverslevelmonitor.note.model.dto.NoteDto;
+import com.golismarcin.riverslevelmonitor.common.model.Note;
+import com.golismarcin.riverslevelmonitor.note.controller.dto.NoteDto;
 import com.golismarcin.riverslevelmonitor.note.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;

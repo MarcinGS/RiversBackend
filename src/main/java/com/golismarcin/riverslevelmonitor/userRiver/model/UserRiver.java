@@ -1,15 +1,13 @@
 package com.golismarcin.riverslevelmonitor.userRiver.model;
 
+import com.golismarcin.riverslevelmonitor.note.model.Note;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,7 +20,7 @@ public class UserRiver {
     private Long stationId;
     private String stationName;
     private String riverName;
-   // private Long regionId;
+    private Long regionId;
     private Double waterLevel;
     private LocalDateTime  waterDate;
     private Double waterTemp;
@@ -31,7 +29,8 @@ public class UserRiver {
     private LocalDateTime  iceDate;
     private Double growLevel;
     private LocalDateTime growDate;
-    @Type(type = "text")
-    private String note;
     private String image;
+    @OneToMany
+    @JoinColumn(name = "riverId")
+    private List<Note> note;
 }

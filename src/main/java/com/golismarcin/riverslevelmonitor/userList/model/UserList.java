@@ -31,4 +31,5 @@ public class UserList {
         }
         items.add(userListItem);
     }
+
 }

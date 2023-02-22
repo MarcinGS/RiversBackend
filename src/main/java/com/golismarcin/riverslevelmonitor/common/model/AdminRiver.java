@@ -1,18 +1,22 @@
 package com.golismarcin.riverslevelmonitor.common.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class UserRiver {
+@AllArgsConstructor
+public class AdminRiver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +25,7 @@ public class UserRiver {
     private String riverName;
     private Long regionId;
     private Double waterLevel;
-    private LocalDateTime  waterDate;
+    private LocalDateTime waterDate;
     private Double waterTemp;
     private LocalDateTime  tempDate;
     private Double iceLevel;
@@ -29,7 +33,4 @@ public class UserRiver {
     private Double growLevel;
     private LocalDateTime growDate;
     private String image;
-    @OneToMany
-    @JoinColumn(name = "riverId")
-    private List<Note> note;
 }

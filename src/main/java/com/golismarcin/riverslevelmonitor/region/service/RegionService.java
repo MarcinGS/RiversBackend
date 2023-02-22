@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.region.service;
 
-import com.golismarcin.riverslevelmonitor.admin.adminRiver.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.common.dto.UserRiverListDto;
+import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.common.model.Region;
 import com.golismarcin.riverslevelmonitor.common.repository.AdminRiverRepository;
 import com.golismarcin.riverslevelmonitor.region.dto.RegionRiverDto;

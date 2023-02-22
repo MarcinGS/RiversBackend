@@ -23,9 +23,8 @@ public class UserListController {
         return userListService.getUserList(userListId);
     }
 
-    @DeleteMapping("/{userListId}")
-    public void deleteRiverFromUserList(@PathVariable Long userListId) {
-         userListService.deleteRiverFromUserList(userListId);
-    }
+
+
+
 }
 

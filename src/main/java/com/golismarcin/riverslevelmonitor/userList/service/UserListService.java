@@ -28,7 +28,7 @@ public class UserListService {
     @Transactional
     public UserList addRiverToPrivateList(Long userListId, UserListItemDto userListItemDto) {
         UserList userList = getInitializedUserList(userListId);
-        System.out.println("List: " + userList);
+        System.out.println("List: " + userList.getId());
         userList.addRiver(UserListItem.builder()
                 .river(getAdminRiver(userListItemDto.riverId()))
                 .build());
@@ -36,7 +36,6 @@ public class UserListService {
     }
 
     private AdminRiver getAdminRiver(Long riverId) {
-        System.out.println("riverId get " + riverId);
         return adminRiverRepository.findById(riverId).orElseThrow();
     }
 
@@ -49,8 +48,4 @@ public class UserListService {
         return userListRepository.findById(id).orElseThrow();
     }
 
-
-    public void deleteRiverFromUserList(Long riverId) {
-       userListItemRepository.deleteById(riverId);
-    }
 }

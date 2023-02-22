@@ -21,8 +21,8 @@ public class UserList {
     private Long id;
     private LocalDateTime created;
 
-    @OneToMany( cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "privateListId")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "userListId")
     private List<UserListItem> items;
 
     public void addRiver(UserListItem userListItem){

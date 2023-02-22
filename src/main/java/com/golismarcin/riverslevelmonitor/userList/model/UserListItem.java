@@ -19,5 +19,7 @@ public class UserListItem {
     private Long id;
     @OneToOne
     private AdminRiver river;
+    private Long userListId;
+
 
 }

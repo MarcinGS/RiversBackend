@@ -4,7 +4,13 @@ import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemDt
 import com.golismarcin.riverslevelmonitor.userList.model.UserList;
 import com.golismarcin.riverslevelmonitor.userList.service.UserListService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/userlist")
@@ -15,7 +21,7 @@ public class UserListController {
 
     @PutMapping("/{userListId}")
     public UserList addRiverToUserList(@PathVariable Long userListId, @RequestBody UserListItemDto userListItemDto){
-       return userListService.addRiverToPrivateList(userListId, userListItemDto);
+       return userListService.addRiverToUserList(userListId, userListItemDto);
     }
 
     @GetMapping("/{userListId}")

@@ -5,7 +5,6 @@ import com.golismarcin.riverslevelmonitor.common.repository.AdminRiverRepository
 import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemDto;
 import com.golismarcin.riverslevelmonitor.userList.model.UserList;
 import com.golismarcin.riverslevelmonitor.userList.model.UserListItem;
-import com.golismarcin.riverslevelmonitor.userList.repository.UserListItemRepository;
 import com.golismarcin.riverslevelmonitor.userList.repository.UserListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,14 +18,13 @@ public class UserListService {
 
     private final UserListRepository userListRepository;
     private final AdminRiverRepository adminRiverRepository;
-    private final UserListItemRepository userListItemRepository;
 
     public UserList getUserList(Long id) {
         return userListRepository.findById(id).orElseThrow();
     }
 
     @Transactional
-    public UserList addRiverToPrivateList(Long userListId, UserListItemDto userListItemDto) {
+    public UserList addRiverToUserList(Long userListId, UserListItemDto userListItemDto) {
         UserList userList = getInitializedUserList(userListId);
         System.out.println("List: " + userList.getId());
         userList.addRiver(UserListItem.builder()

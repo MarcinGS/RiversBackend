@@ -7,10 +7,9 @@ public class SlugifyUtils {
 
     public static String slugifyFileName(String fileName){
         String name = FilenameUtils.getBaseName(fileName);
-        Slugify slg = new Slugify();
-        String changedName = slg
-                .withCustomReplacement("_","-")
-                .slugify(name);
-        return changedName + "." + FilenameUtils.getExtension(fileName);
+        Slugify slg = Slugify.builder()
+                .customReplacement("_","-").build();
+
+        return slg.slugify(name) + "." + FilenameUtils.getExtension(fileName);
     }
 }

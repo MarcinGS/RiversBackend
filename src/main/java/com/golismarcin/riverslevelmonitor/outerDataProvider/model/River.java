@@ -1,5 +1,6 @@
-package com.golismarcin.riverslevelmonitor.admin.outerDataProvider.model;
+package com.golismarcin.riverslevelmonitor.outerDataProvider.model;
 
+import com.golismarcin.riverslevelmonitor.common.model.Region;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +29,10 @@ public class River {
     private Long stationId;
     private String stationName;
     private String riverName;
-    private Long regionId;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "river")
+    @ManyToOne
+    private Region region;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "riverId")
     private List<RiverMeasurement> measurements;
 
     public void addMeasurements(RiverMeasurement measurement){
@@ -37,6 +40,10 @@ public class River {
             measurements = new ArrayList<>();
         }
         measurements.add(measurement);
+    }
+
+    public boolean isStationIdEquals(Long id){
+        return stationId.equals(id);
     }
 }
 

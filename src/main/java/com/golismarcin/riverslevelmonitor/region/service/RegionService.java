@@ -3,9 +3,10 @@ package com.golismarcin.riverslevelmonitor.region.service;
 import com.golismarcin.riverslevelmonitor.common.dto.UserRiverListDto;
 import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.common.model.Region;
+import com.golismarcin.riverslevelmonitor.common.model.RegionRepository;
+import com.golismarcin.riverslevelmonitor.common.model.RiverRegion;
 import com.golismarcin.riverslevelmonitor.common.repository.AdminRiverRepository;
 import com.golismarcin.riverslevelmonitor.region.dto.RegionRiverDto;
-import com.golismarcin.riverslevelmonitor.region.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,8 +28,9 @@ public class RegionService {
     }
 
     @Transactional(readOnly = true)
-    public RegionRiverDto getRegionsWithRivers(String name, Pageable pageable) {
-        Region region = regionRepository.findByName(name);
+    public RegionRiverDto getRegionsWithRivers(String regionName, Pageable pageable) {
+        RiverRegion riverRegion = RiverRegion.valueOf(regionName.replace("-", "_").toUpperCase());
+        Region region = regionRepository.findByName(riverRegion);
         Page<AdminRiver> page = adminRiverRepository.findByRegionId(region.getId(), pageable);
         List<UserRiverListDto> userRiverListDtos = page.getContent().stream().map(river -> UserRiverListDto.builder()
                 .id(river.getId())

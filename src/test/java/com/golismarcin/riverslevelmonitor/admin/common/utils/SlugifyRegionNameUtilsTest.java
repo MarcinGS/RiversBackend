@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SlugifyUtilsTest {
+class SlugifyRegionNameUtilsTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -20,5 +20,6 @@ class SlugifyUtilsTest {
         String filename = SlugifyUtils.slugifyFileName(in);
         assertEquals(filename,out);
     }
+
 
 }

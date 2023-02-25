@@ -1,4 +1,4 @@
-package com.golismarcin.riverslevelmonitor.admin.outerDataProvider.model.dto;
+package com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto;
 
 import lombok.Getter;
 

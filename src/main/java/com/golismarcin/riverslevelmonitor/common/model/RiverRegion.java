@@ -1,17 +1,17 @@
-package com.golismarcin.riverslevelmonitor.admin.adminRiver.model;
+package com.golismarcin.riverslevelmonitor.common.model;
 
-public enum AdminRiverRegion {
+public enum RiverRegion {
     DOLNOŚLĄSKIE,
-KUJAWSKO_POMORSKIE,
+    KUJAWSKO_POMORSKIE,
     LUBELSKIE,
-    lubuskie,
-    ŁUDZKIE,
+    LUBUSKIE,
+    ŁÓDZKIE,
     MAŁOPOLSKIE,
     MAZOWIECKIE,
     OPOLSKIE,
-    podkarpackie,
+    PODKARPACKIE,
     PODLASKIE,
-    pomorskie,
+    POMORSKIE,
     ŚLĄSKIE,
     ŚWIĘTOKRZYSKIE,
     WARMIŃSKO_MAZURSKIE,

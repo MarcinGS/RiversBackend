@@ -1,5 +1,6 @@
 package com.golismarcin.riverslevelmonitor.userList.controller;
 
+
 import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListDto;
 import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemDto;
 import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemIdDto;

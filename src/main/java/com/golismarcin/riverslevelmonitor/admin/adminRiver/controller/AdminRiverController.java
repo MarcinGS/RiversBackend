@@ -43,10 +43,14 @@ public class AdminRiverController {
 
         return adminRiverService.getRivers(pageable).map(r -> mapToAdminRiverDto(r));
     }
-
     @GetMapping("/admin/rivers/{id}")
-    public AdminRiverDto getRiver(@PathVariable Long id){
+    public AdminRiverDto getRiverForAdmin(@PathVariable Long id){
         return mapToAdminRiverDto(adminRiverService.getRiver(id));
+    }
+
+    @GetMapping("/admin/rivers/site/{id}")
+    public AdminRiver getRiverForSite(@PathVariable Long id){
+        return adminRiverService.getRiver(id);
     }
 
     @PostMapping("/admin/rivers")

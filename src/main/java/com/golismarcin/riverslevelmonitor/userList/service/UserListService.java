@@ -2,7 +2,7 @@ package com.golismarcin.riverslevelmonitor.userList.service;
 
 import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.common.repository.AdminRiverRepository;
-import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemDto;
+import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemIdDto;
 import com.golismarcin.riverslevelmonitor.userList.model.UserList;
 import com.golismarcin.riverslevelmonitor.userList.model.UserListItem;
 import com.golismarcin.riverslevelmonitor.userList.repository.UserListRepository;
@@ -24,11 +24,10 @@ public class UserListService {
     }
 
     @Transactional
-    public UserList addRiverToUserList(Long userListId, UserListItemDto userListItemDto) {
+    public UserList addRiverToUserList(Long userListId, UserListItemIdDto userListItemIdDto) {
         UserList userList = getInitializedUserList(userListId);
-        System.out.println("List: " + userList.getId());
         userList.addRiver(UserListItem.builder()
-                .river(getAdminRiver(userListItemDto.riverId()))
+                .river(getAdminRiver(userListItemIdDto.riverId()))
                 .build());
         return userList;
     }

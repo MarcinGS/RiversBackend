@@ -11,6 +11,8 @@ import com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto.RiverDto;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.repository.OuterDataProviderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,7 @@ import java.util.List;
 
 
 @Service
+@EnableScheduling
 @RequiredArgsConstructor
 public class OuterDataProviderService {
 
@@ -35,6 +38,7 @@ public class OuterDataProviderService {
     private String imgwUrl;
 
     @Transactional
+    @Scheduled(cron = "@hourly")
     public void getRiversFromProvider() throws IOException {
         List<RiverDto> riverDto = new ObjectMapper().readValue(new URL(imgwUrl), new TypeReference<List<RiverDto>>() {});
         List<River> outerRivers =  riverDto.stream().map(this::mapDtoToRiver).toList();

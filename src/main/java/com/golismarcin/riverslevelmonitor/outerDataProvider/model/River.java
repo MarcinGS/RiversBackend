@@ -30,6 +30,7 @@ public class River {
     private String stationName;
     private String riverName;
     @ManyToOne
+    @JoinColumn(name = "regionId")
     private Region region;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "riverId")

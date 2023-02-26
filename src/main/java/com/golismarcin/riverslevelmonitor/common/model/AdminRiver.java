@@ -1,5 +1,6 @@
 package com.golismarcin.riverslevelmonitor.common.model;
 
+import com.golismarcin.riverslevelmonitor.outerDataProvider.model.RiverMeasurement;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,11 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 @Entity
 @Getter
 @Builder
+@Table(name = "river")
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminRiver {
@@ -23,14 +28,11 @@ public class AdminRiver {
     private Long stationId;
     private String stationName;
     private String riverName;
-    private Long regionId;
-    private Double waterLevel;
-    private LocalDateTime waterDate;
-    private Double waterTemp;
-    private LocalDateTime  tempDate;
-    private Double iceLevel;
-    private LocalDateTime  iceDate;
-    private Double growLevel;
-    private LocalDateTime growDate;
+    @ManyToOne
+    @JoinColumn(name = "regionId")
+    private Region region;
+    @OneToMany
+    @JoinColumn(name = "riverId")
+    private List<RiverMeasurement> measurements;
     private String image;
 }

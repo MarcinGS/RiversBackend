@@ -1,17 +1,19 @@
 package com.golismarcin.riverslevelmonitor.userList.controller.dto;
 
-import com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto.AdminRiverDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserListItemDto {
+public class UserListDto {
     private Long id;
-    private Long userListId;
-    private AdminRiverDto river;
+    private LocalDateTime created;
+    private List<UserListItemDto> items;
 }

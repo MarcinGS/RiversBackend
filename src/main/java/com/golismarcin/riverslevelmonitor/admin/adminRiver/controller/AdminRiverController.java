@@ -5,13 +5,21 @@ import com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto.Upload
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverImageService;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverService;
 import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.model.RiverMeasurement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -19,6 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import static com.golismarcin.riverslevelmonitor.mapper.AdminRiverToDto.mapToAdminRiverDto;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,13 +39,14 @@ public class AdminRiverController {
     private final AdminRiverImageService riverImageService;
 
     @GetMapping("/admin/rivers")
-    public Page<AdminRiver> getRivers(Pageable pageable){
-        return adminRiverService.getRivers(pageable);
+    public Page<AdminRiverDto> getRivers(Pageable pageable){
+
+        return adminRiverService.getRivers(pageable).map(r -> mapToAdminRiverDto(r));
     }
 
     @GetMapping("/admin/rivers/{id}")
-    public AdminRiver getRiver(@PathVariable Long id){
-        return adminRiverService.getRiver(id);
+    public AdminRiverDto getRiver(@PathVariable Long id){
+        return mapToAdminRiverDto(adminRiverService.getRiver(id));
     }
 
     @PostMapping("/admin/rivers")
@@ -72,21 +83,27 @@ public class AdminRiverController {
     }
 
     private static AdminRiver mapAdminRiver(AdminRiverDto adminRiverDto, Long id) {
-        return AdminRiver.builder()
+        AdminRiver river =  AdminRiver.builder()
                 .id(id)
                 .stationId(adminRiverDto.getStationId())
                 .stationName(adminRiverDto.getStationName())
                 .riverName(adminRiverDto.getRiverName())
-                .regionId(adminRiverDto.getRegionId())
-                .waterLevel(adminRiverDto.getWaterLevel())
-                .waterDate(adminRiverDto.getWaterDate())
-                .waterTemp(adminRiverDto.getWaterTemp())
-                .tempDate(adminRiverDto.getTempDate())
-                .iceLevel(adminRiverDto.getIceLevel())
-                .iceDate(adminRiverDto.getIceDate())
-                .growLevel(adminRiverDto.getGrowLevel())
-                .growDate(adminRiverDto.getGrowDate())
                 .image(adminRiverDto.getImage())
+                .region(adminRiverDto.getRegion())
                 .build();
+                 river.getMeasurements().add(
+                         RiverMeasurement.builder()
+                        .waterLevel(adminRiverDto.getWaterLevel())
+                        .waterDate(adminRiverDto.getWaterDate())
+                        .waterTemp(adminRiverDto.getWaterTemp())
+                        .tempDate(adminRiverDto.getTempDate())
+                        .iceLevel(adminRiverDto.getIceLevel())
+                        .iceDate(adminRiverDto.getIceDate())
+                        .growLevel(adminRiverDto.getGrowLevel())
+                        .growDate(adminRiverDto.getGrowDate())
+                        .build());
+                 return river;
     }
+
+
 }

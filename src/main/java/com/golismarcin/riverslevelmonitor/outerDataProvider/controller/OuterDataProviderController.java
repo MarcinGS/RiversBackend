@@ -36,4 +36,6 @@ public class OuterDataProviderController {
     public AdminRiver getRiverForSite(@PathVariable Long id){
         return adminRiverService.getRiver(id);
     }
+
+
 }

@@ -5,7 +5,6 @@ import com.golismarcin.riverslevelmonitor.security.model.User;
 import com.golismarcin.riverslevelmonitor.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -19,8 +18,8 @@ public class RiverUserDetailsService implements UserDetailsService {
 
     @Transactional
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow();
+    public RiverUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findById(Long.parseLong(username)).orElseThrow();
         RiverUserDetails riverUserDetails = new RiverUserDetails(
                 user.getUsername(),
                 user.getPassword(),

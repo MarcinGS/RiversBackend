@@ -19,30 +19,38 @@ public class UserListService {
     private final UserListRepository userListRepository;
     private final AdminRiverRepository adminRiverRepository;
 
-    public UserList getUserList(Long id) {
-        return userListRepository.findById(id).orElseThrow();
+    public UserList getUserList(Long userId) {
+        return userListRepository.findByUserId(userId);
     }
 
     @Transactional
-    public UserList addRiverToUserList(Long userListId, UserListItemIdDto userListItemIdDto) {
-        UserList userList = getInitializedUserList(userListId);
+    public UserList addRiverToUserList(UserListItemIdDto userListItemIdDto, Long userId) {
+        UserList userList = getInitializedUserList(userId);
         userList.addRiver(UserListItem.builder()
                 .river(getAdminRiver(userListItemIdDto.riverId()))
                 .build());
         return userList;
     }
 
+    public UserList createNewUserList(Long userId){
+        return userListRepository.save(UserList.builder()
+                .created(LocalDateTime.now())
+                .userId(userId)
+                .build());
+    }
+
     private AdminRiver getAdminRiver(Long riverId) {
         return adminRiverRepository.findById(riverId).orElseThrow();
     }
 
-    private UserList getInitializedUserList(Long id) {
-        if (id == null || id <= 0) {
+    private UserList getInitializedUserList(Long userId) {
+        if (userId == null || userId <= 0) {
             return userListRepository.save(UserList.builder()
                     .created(LocalDateTime.now())
+                    .userId(userId)
                     .build());
         }
-        return userListRepository.findById(id).orElseThrow();
+        return userListRepository.findByUserId(userId);
     }
 
 }

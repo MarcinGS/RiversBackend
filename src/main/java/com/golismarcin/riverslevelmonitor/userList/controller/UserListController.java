@@ -7,8 +7,8 @@ import com.golismarcin.riverslevelmonitor.userList.controller.dto.UserListItemId
 import com.golismarcin.riverslevelmonitor.userList.model.UserList;
 import com.golismarcin.riverslevelmonitor.userList.service.UserListService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,15 +24,22 @@ public class UserListController {
 
     private final UserListService userListService;
 
-    @PutMapping("/{userListId}")
-    public UserList addRiverToUserList(@PathVariable Long userListId, @RequestBody UserListItemIdDto userListItemIdDto){
-       return userListService.addRiverToUserList(userListId, userListItemIdDto);
+    @PutMapping()
+    public UserListDto addRiverToUserList(@RequestBody UserListItemIdDto userListItemIdDto,
+                                       @AuthenticationPrincipal Long userId){
+        UserList userList = userListService.addRiverToUserList(userListItemIdDto, userId);
+        return mapToUserListDto(userList);
     }
 
-    @GetMapping("/{userListId}")
-    public UserListDto getUserList(@PathVariable Long userListId){
-        UserList userList = userListService.getUserList(userListId);
+    @GetMapping()
+    public UserListDto getUserList(@AuthenticationPrincipal Long userId){
+        UserList userList = userListService.getUserList(userId);
 
+        return mapToUserListDto(userList);
+
+    }
+
+    private static UserListDto mapToUserListDto(UserList userList) {
         return UserListDto.builder()
                 .id(userList.getId())
                 .created(userList.getCreated())
@@ -41,10 +48,7 @@ public class UserListController {
                         .userListId(e.getUserListId())
                         .river(mapToAdminRiverDto(e.getRiver()))
                         .build()).toList()).build();
-
     }
-
-
 
 
 }

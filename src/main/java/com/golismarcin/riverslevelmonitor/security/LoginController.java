@@ -6,6 +6,7 @@ import com.golismarcin.riverslevelmonitor.security.model.RiverUserDetails;
 import com.golismarcin.riverslevelmonitor.security.model.User;
 import com.golismarcin.riverslevelmonitor.security.model.UserRole;
 import com.golismarcin.riverslevelmonitor.security.repository.UserRepository;
+import com.golismarcin.riverslevelmonitor.userList.service.UserListService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,23 +29,26 @@ public class LoginController {
 
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
+    private UserListService userListService;
     private long expirationTime;
     private String secret;
 
     LoginController(AuthenticationManager authenticationManager,
                     UserRepository userRepository,
+                    UserListService userListService,
                     @Value("${jwt.expirationTime}") long expirationTime,
                     @Value("${jwt.secret}") String secret) {
         this.authenticationManager = authenticationManager;
         this.expirationTime = expirationTime;
         this.secret = secret;
         this.userRepository = userRepository;
+        this.userListService = userListService;
     }
 
-    @PostMapping("/login")
-    public Token login(@RequestBody LoginCredentials loginCredentials){
-        return authenticate(loginCredentials.getUsername(), loginCredentials.getPassword());
-    }
+//    @PostMapping("/login")
+//    public Token login(@RequestBody LoginCredentials loginCredentials){
+//        return authenticate(loginCredentials.getUsername(), loginCredentials.getPassword());
+//    }
 
     @PostMapping("/register")
     public Token register(@RequestBody @Valid RegisterCredentials registerCredentials){
@@ -54,16 +58,17 @@ public class LoginController {
         if(userRepository.existsByUsername(registerCredentials.getUsername())){
             throw new IllegalArgumentException("Użytkownik już istnieje");
         }
-        userRepository.save(User.builder()
+         User user = userRepository.save(User.builder()
                         .username(registerCredentials.getUsername())
                         .password("{bcrypt}" + new BCryptPasswordEncoder().encode(registerCredentials.getPassword()))
                         .enabled(true)
                         .authorities(List.of(UserRole.ROLE_CUSTOMER))
                         .build());
-       return authenticate(registerCredentials.getUsername(), registerCredentials.getPassword());
+        userListService.createNewUserList(user.getId());
+       return authenticate(user.getId(), registerCredentials.getPassword());
     }
 
-    private Token authenticate(String username, String password) {
+    private Token authenticate(Long username, String password) {
         Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, password)
         );

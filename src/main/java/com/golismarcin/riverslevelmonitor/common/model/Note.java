@@ -19,7 +19,7 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private Long riverId;
+    private Long userListItemId;
     private String topic;
     private String content;
 }

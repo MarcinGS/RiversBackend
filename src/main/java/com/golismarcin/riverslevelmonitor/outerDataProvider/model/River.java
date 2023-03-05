@@ -43,9 +43,6 @@ public class River {
         measurements.add(measurement);
     }
 
-    public boolean isStationIdEquals(Long id){
-        return stationId.equals(id);
-    }
 }
 
 

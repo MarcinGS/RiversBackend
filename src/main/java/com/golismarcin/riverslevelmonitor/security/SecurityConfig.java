@@ -25,6 +25,8 @@ public class SecurityConfig {
                                            RiverUserDetailsService userDetailsService) throws Exception {
        http.authorizeRequests(authorize -> authorize
                .antMatchers("/admin/**").hasRole(UserRole.ROLE_ADMIN.getRole())
+               .antMatchers("/note/**").hasRole(UserRole.ROLE_CUSTOMER.getRole())
+               .antMatchers("/userlist/**").hasRole(UserRole.ROLE_CUSTOMER.getRole())
                .anyRequest().permitAll()
        );
        http.csrf().disable();

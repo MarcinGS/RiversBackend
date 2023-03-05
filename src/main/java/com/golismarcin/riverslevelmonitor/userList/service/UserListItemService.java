@@ -1,7 +1,7 @@
 package com.golismarcin.riverslevelmonitor.userList.service;
 
+import com.golismarcin.riverslevelmonitor.userList.model.UserList;
 import com.golismarcin.riverslevelmonitor.userList.repository.UserListItemRepository;
-import com.golismarcin.riverslevelmonitor.userList.repository.UserListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 public class UserListItemService {
 
     private final UserListItemRepository userListItemRepository;
-    private final UserListRepository userListRepository;
+    private final UserListService userListService;
 
     public void deleteRiverFromUserList(Long riverId) {
         userListItemRepository.deleteById(riverId);
     }
 
-
-    public Long countItemsInUserList(Long userListId) {
-        return userListItemRepository.countByUserListId(userListId);
+    public Long countItemsInUserList(Long userId) {
+        UserList userList = userListService.getUserList(userId);
+        return userListItemRepository.countByUserListId(userList.getId());
     }
 }

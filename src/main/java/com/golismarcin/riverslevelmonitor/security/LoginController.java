@@ -45,10 +45,11 @@ public class LoginController {
         this.userListService = userListService;
     }
 
-//    @PostMapping("/login")
-//    public Token login(@RequestBody LoginCredentials loginCredentials){
-//        return authenticate(loginCredentials.getUsername(), loginCredentials.getPassword());
-//    }
+    @PostMapping("/login")
+    public Token login(@RequestBody LoginCredentials loginCredentials){
+        User user = userRepository.findByUsername(loginCredentials.getUsername()).orElseThrow();
+        return authenticate(user.getId(), loginCredentials.getPassword());
+    }
 
     @PostMapping("/register")
     public Token register(@RequestBody @Valid RegisterCredentials registerCredentials){

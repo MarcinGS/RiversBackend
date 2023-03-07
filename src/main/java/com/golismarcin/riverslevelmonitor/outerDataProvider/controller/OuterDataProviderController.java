@@ -22,7 +22,7 @@ public class OuterDataProviderController {
     private final OuterDataProviderService outerDataProviderService;
     private final AdminRiverService adminRiverService;
 
-    @GetMapping("/data")
+    @GetMapping("admin/update")
     public void getData() throws IOException {
         outerDataProviderService.getRiversFromProvider();
     }

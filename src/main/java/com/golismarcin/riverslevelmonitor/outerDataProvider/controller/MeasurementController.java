@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class MeasurementController {
@@ -21,5 +23,9 @@ public class MeasurementController {
     public Page<RiverMeasurement> getRiverMeasurement(@RequestParam int page, @RequestParam int size, @PathVariable Long riverId){
         Pageable pageable = PageRequest.of(page,size);
         return measurementService.getRiverMeasurement(pageable, riverId);
+    }
+    @GetMapping("/measurementtab/{riverId}")
+    public List<RiverMeasurement> getRiverMeasurementTab(@PathVariable Long riverId){
+        return measurementService.getRiverMeasurementTab(riverId);
     }
 }

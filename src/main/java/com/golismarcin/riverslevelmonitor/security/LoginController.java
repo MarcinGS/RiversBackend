@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.golismarcin.riverslevelmonitor.security.model.RiverUserDetails;
 import com.golismarcin.riverslevelmonitor.security.model.User;
 import com.golismarcin.riverslevelmonitor.security.model.UserRole;
+import com.golismarcin.riverslevelmonitor.security.model.dto.UserDto;
 import com.golismarcin.riverslevelmonitor.security.repository.UserRepository;
 import com.golismarcin.riverslevelmonitor.userList.service.UserListService;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +46,12 @@ public class LoginController {
         this.secret = secret;
         this.userRepository = userRepository;
         this.userListService = userListService;
+    }
+
+    @GetMapping("/username")
+    public UserDto getUserName(@AuthenticationPrincipal Long userId){
+        User user = userRepository.findById(userId).orElseThrow();
+        return new UserDto(user.getUsername());
     }
 
     @PostMapping("/login")

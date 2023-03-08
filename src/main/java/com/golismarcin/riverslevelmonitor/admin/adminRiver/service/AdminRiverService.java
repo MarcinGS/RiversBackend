@@ -26,6 +26,7 @@ public class AdminRiverService {
         return adminRiverRepository.save(river);
     }
 
+
     public AdminRiver updateRiver(AdminRiver river) {
         return adminRiverRepository.save(river);
     }

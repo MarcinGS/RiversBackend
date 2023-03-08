@@ -6,6 +6,7 @@ import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverIma
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverService;
 import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.model.RiverMeasurement;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.service.MeasurementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,7 @@ public class AdminRiverController {
     public static final Long EMPTY_ID = null;
     private final AdminRiverService adminRiverService;
     private final AdminRiverImageService riverImageService;
+    private final MeasurementService measurementService;
 
     @GetMapping("/admin/rivers")
     public Page<AdminRiverDto> getRivers(Pageable pageable){
@@ -86,7 +88,7 @@ public class AdminRiverController {
                 .body(file);
     }
 
-    private static AdminRiver mapAdminRiver(AdminRiverDto adminRiverDto, Long id) {
+    private AdminRiver mapAdminRiver(AdminRiverDto adminRiverDto, Long id) {
         AdminRiver river =  AdminRiver.builder()
                 .id(id)
                 .stationId(adminRiverDto.getStationId())
@@ -94,6 +96,7 @@ public class AdminRiverController {
                 .riverName(adminRiverDto.getRiverName())
                 .image(adminRiverDto.getImage())
                 .region(adminRiverDto.getRegion())
+                .measurements(measurementService.getRiverMeasurementTab(id))
                 .build();
                  river.getMeasurements().add(
                          RiverMeasurement.builder()

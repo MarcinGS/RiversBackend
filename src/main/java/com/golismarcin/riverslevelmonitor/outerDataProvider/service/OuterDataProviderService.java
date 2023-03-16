@@ -60,7 +60,6 @@ public class OuterDataProviderService {
             for (River dbRiv : dbRivers) {
                 if(outerRiv.getStationId().longValue() == dbRiv.getStationId().longValue()){
                     if(!dbRiv.getMeasurements().get(dbRiv.getMeasurements().size()-1).equals(outerRiv.getMeasurements().get(0))) {
-                        System.out.println(dbRiv.getId());
                         dbRiv.addMeasurements(outerRiv.getMeasurements().get(0));
                         riversToSave.add(dbRiv);
                     }
@@ -88,8 +87,7 @@ public class OuterDataProviderService {
     private Region parseRegionName(String regionName) {
         if (regionName != null && regionName.length() > 5) {
             RiverRegion riverRegion = RiverRegion.valueOf(regionName.replace("-", "_").toUpperCase());
-           Region region = regionRepository.findByName(riverRegion);
-            return region;
+            return regionRepository.findByName(riverRegion);
         }else
             return null;
     }

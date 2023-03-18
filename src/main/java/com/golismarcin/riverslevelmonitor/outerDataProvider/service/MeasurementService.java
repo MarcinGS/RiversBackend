@@ -1,6 +1,7 @@
 package com.golismarcin.riverslevelmonitor.outerDataProvider.service;
 
 import com.golismarcin.riverslevelmonitor.outerDataProvider.model.RiverMeasurement;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto.StatisticsDto;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.repository.MeasurementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,5 +22,9 @@ public class MeasurementService {
 
     public List<RiverMeasurement> getRiverMeasurementTab(Long riverId) {
         return  measurementRepository.findByRiverId(riverId);
+    }
+
+    public StatisticsDto getStatistics() {
+        return new StatisticsDto(measurementRepository.count());
     }
 }

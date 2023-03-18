@@ -3,6 +3,8 @@ package com.golismarcin.riverslevelmonitor.outerDataProvider.controller;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.controller.dto.AdminRiverDto;
 import com.golismarcin.riverslevelmonitor.admin.adminRiver.service.AdminRiverService;
 import com.golismarcin.riverslevelmonitor.common.model.AdminRiver;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto.StatisticsDto;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.service.MeasurementService;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.service.OuterDataProviderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,10 +23,12 @@ public class OuterDataProviderController {
 
     private final OuterDataProviderService outerDataProviderService;
     private final AdminRiverService adminRiverService;
+    private final MeasurementService measurementService;
 
     @GetMapping("admin/update")
-    public void getData() throws IOException {
+    public StatisticsDto getData() throws IOException {
         outerDataProviderService.getRiversFromProvider();
+        return measurementService.getStatistics();
     }
 
     @GetMapping("/rivers")

@@ -88,6 +88,7 @@ public class AdminRiverController {
                 .body(file);
     }
 
+
     private AdminRiver mapAdminRiver(AdminRiverDto adminRiverDto, Long id) {
         AdminRiver river =  AdminRiver.builder()
                 .id(id)

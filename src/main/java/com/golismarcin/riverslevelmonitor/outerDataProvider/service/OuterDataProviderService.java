@@ -8,6 +8,7 @@ import com.golismarcin.riverslevelmonitor.common.model.RiverRegion;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.model.River;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.model.RiverMeasurement;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto.RiverDto;
+import com.golismarcin.riverslevelmonitor.outerDataProvider.model.dto.StatisticsDto;
 import com.golismarcin.riverslevelmonitor.outerDataProvider.repository.OuterDataProviderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,15 +16,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 @Service
 @EnableScheduling
